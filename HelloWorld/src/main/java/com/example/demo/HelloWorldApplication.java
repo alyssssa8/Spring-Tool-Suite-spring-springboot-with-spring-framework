@@ -22,6 +22,7 @@ public class HelloWorldApplication {
 		// this is dependency injection, inject the User class. 
 		User obj = context.getBean(User.class); // in User class, need to add @Component	
 		obj.name();
+		obj.name1();
 		obj.name2();
 		
 	}

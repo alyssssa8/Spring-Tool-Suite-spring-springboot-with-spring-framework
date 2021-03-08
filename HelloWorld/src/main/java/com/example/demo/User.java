@@ -6,17 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class User {
 	
-//	
-//	
-//	ComStud test = new ComStud();
-//	public void name() {
-//		test.sub();
-//	}
-	
 	public void name() {
 		System.out.println("Java in name method");
 		
 	}
+	
+	ComStud test = new ComStud();
+	public void name1() {
+		test.sub();
+	}
+	
+
 	
 	@Autowired  
 	ComStud stud;
