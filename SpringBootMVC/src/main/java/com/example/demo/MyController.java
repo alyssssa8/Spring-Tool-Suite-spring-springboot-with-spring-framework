@@ -195,14 +195,15 @@ public class MyController {
 		
 		return "showUser";
 	}
+	
+	
+	// print out to the browser
+	
 	@GetMapping("getUserOut")
 	public List<User> getUsersOut(User user) {
-	
-	
-
-		
 		return repo.findAll();
 	}
+	
 	@GetMapping("getUser")
 	public String getUser(@RequestParam int uid, Model m) {
 		
