@@ -8,17 +8,45 @@
 </head>
 <body>
 	Welcome to Spring Boot
-	 <!-- <form action="add">
+	
+	 <form action="add"> <!-- connected with the RequestMapping -->
+		action="add"
+		<br>
 		Enter 1st number : <input type="text" name="num1"><br>
 		Enter 2st number : <input type="text" name="num2"><br>
 		<input type="submit">
-	</form>  --> 
+	</form>  
 	
-	<form action="addUsers" method="post"> <!--sending the date to the server  -->
+	<!-- without method VS with method:
+	http://localhost:8080/addUser?num3=1&num4=dadf
+	 -->
+
+	
+	
+	<form action="addUser" > <!-- sending the date to the server  -->
+		action="addUser"
+		<br>
 		Enter User Id : <input type="text" name="uid"><br>
 		Enter User Name : <input type="text" name="uname"><br>
 		<input type="submit">
 	</form>
+	
+		<form action="addUser2" method="post"> <!--sending the date to the server  -->
+		action="addUsers2"
+		<br>
+		Enter User Id : <input type="text" name="uid"><br>
+		Enter User Name : <input type="text" name="uname"><br>
+		<input type="submit">
+	</form>
+		<form action="addUsers"> <!--sending the date to the server  -->
+		action="addUsers"
+		<br>
+		Enter User Id : <input type="text" name="uid"><br>
+		Enter User Name : <input type="text" name="uname"><br>
+		<input type="submit">
+	</form>
+	
+
 	
 	<hr>
  	

@@ -5,6 +5,7 @@ import javax.persistence.Id;
 
 
 @Entity  //for fetching from database
+// User is a model. 
 public class User 
 {
    @Id    //for fetching from database

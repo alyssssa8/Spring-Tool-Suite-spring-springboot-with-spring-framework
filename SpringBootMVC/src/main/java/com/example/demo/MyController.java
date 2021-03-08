@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.UserRepo;
 import com.example.demo.model.User;
@@ -21,23 +23,15 @@ import com.example.demo.model.User;
 
 @Controller
 public class MyController {
-	
-	@Autowired
-	UserRepo repo;
-	
-	@ModelAttribute
-	public void addmodel(Model m) {
-		m.addAttribute("namejjjjj", "Gauttam");
-	}
-	
+	// do not have to go through main, just use URL
 	@RequestMapping("/home")
 	public String home() {
 		return "index";
 	}
 	
+//	create a ModelAndView
 	
-	
-//	@RequestMapping("/add")
+//	@RequestMapping("/add") //matched with form action
 //	public ModelAndView add(@RequestParam("num1") int i, @RequestParam("num2") int j) {
 //		ModelAndView mv = new ModelAndView();
 //		mv.setViewName("result");
@@ -46,13 +40,8 @@ public class MyController {
 //		return mv;	
 //	}
 	
-//	@RequestMapping("/add")
-//	public String add(@RequestParam("num1") int i, @RequestParam("num2") int j, ModelMap m) {
-//		//model map like hash map, key and value. 
-//		int num3 = i + j;
-//		m.addAttribute("num3", num3);
-//		return "result";	
-//	}
+//	same as above
+//	Model
 	
 //	@RequestMapping("/add")
 //	public String add(@RequestParam("num1") int i, @RequestParam("num2") int j, Model m) {
@@ -62,32 +51,111 @@ public class MyController {
 //		return "result";	
 //	}
 	
+//	same as above
+//	ModelMap
+	
+	@RequestMapping("/add")
+	public String add(@RequestParam("num1") int i, @RequestParam("num2") int j, ModelMap m) {
+		//modelmap like hash map, key and value. 
+		int num3 = i + j;
+		m.addAttribute("num3", num3);
+		return "result";	
+	}
 	
 	
-//***************************************************************	
-//	@RequestMapping("/addUser")
+	
+// added to the model, with work with /add and /addUser
+	@ModelAttribute
+	public void addmodel(Model m) {
+		m.addAttribute("name", "Gauttam");
+	}
+	
+	@RequestMapping("/addUser")
+	// could have int to String, but not string to int. 
+	//	if used method post, then can not use @RequestParam
+	
+	public String addUser(@RequestParam("uid") String i, User u, Model m) {
+		m.addAttribute("user", u);
+		System.out.println(i);
+		return "result";
+	}
+	
+//	@RequestMapping("/addUser2")
+//	public String addUser(@ModelAttribute User u, Model m) {
+//		m.addAttribute("user", u);
+//		return "result";
+//	}
+	
+	
+	//same as above
+
+//
+//	@RequestMapping("/addUser2")
+//	public String addUser3(@ModelAttribute User u, Model m) {
+//		m.addAttribute("user", u);
+//		return "result";
+//	}
+	
+
+//	@RequestMapping("/addUser2")
+//	public String addUser3(User u, Model m) {
+//		m.addAttribute("user", u);
+//		return "result";
+//	}
+//	
+
+//	
+//	//same as above
+//	@RequestMapping("/addUser2")
+//	public String addUser3(User u, Model m) {
+////		m.addAttribute("user", u);
+//		return "result";
+//	}
+	
+	
+
+
+//	same as above
+	
+	@RequestMapping("addUser2")
+	public String addUser(User u) {
+		return "result";
+	}
+	
+	
+	
+//	@PostMapping(value="addUser2")
+//	public String addUser(User u, Model m) {
+//		m.addAttribute(u);
+//		return "result";
+//	}
+//
+
+	
+//	@RequestMapping(value ="addUser2",method=RequestMethod.POST)
 //	public String addUser(User u) {
 //		return "result";
 //	}
 	
-//	@RequestMapping(value ="addUser",method=RequestMethod.POST)
+//	@PostMapping(value ="addUser2")
+//		return "result";
+//	}
+	
+//	@RequestMapping(value="addUser2")
 //	public String addUser(User u) {
 //		return "result";
 //	}
 	
-//	@PostMapping(value ="addUser")
-//		return "result";
-//	}
-	
-//	@RequestMapping(value="addUser")
+//	@GetMapping(value="addUser2")
 //	public String addUser(User u) {
 //		return "result";
 //	}
 	
-//	@GetMapping(value="addUser")
-//	public String addUser(User u) {
-//		return "result";
-//	}
+	@Autowired
+	UserRepo repo;
+	
+	
+
 //***************************************************************	
 	
 	
@@ -99,12 +167,6 @@ public class MyController {
 //	}
 	
 	
-	@PostMapping(value="addUser")
-	public String addUser(User u, Model m) {
-		m.addAttribute(u);
-		return "result";
-	}
-
 
 
 	@GetMapping("getUsers")

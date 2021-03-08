@@ -7,9 +7,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	 Result is : ${user} 
-<%-- 	  Result is : ${num3}  --%>
-	  <br>
+  	  num1 + num2 = num3 == ${num3} 
+  	  <br> <br>
+	  Result is : ${user} 
+	
+	  <br> <br>
 	  Welcome Back  ${name}
 	  
 </body>
