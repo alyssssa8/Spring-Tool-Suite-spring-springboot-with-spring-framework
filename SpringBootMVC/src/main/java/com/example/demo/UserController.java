@@ -22,11 +22,13 @@ public class UserController {
 		List<User> user = repo.findAll();
 		return user;
 	}
+	
 	@GetMapping("User/{uid}")
-	public User userF(@PathVariable("uid") int uid){
+	public User user(@PathVariable("uid") int uid){
 		User user = repo.findById(uid).orElse(new User(0,""));
 		return user;
 	}
+	
 	@PostMapping("User")
 //	@PostMapping()
 	public User addUser(User user) {

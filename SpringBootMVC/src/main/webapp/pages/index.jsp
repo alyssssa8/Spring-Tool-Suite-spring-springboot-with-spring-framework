@@ -22,7 +22,6 @@
 	 -->
 
 	
-	
 	<form action="addUser" > <!-- sending the date to the server  -->
 		action="addUser"
 		<br>
@@ -30,23 +29,40 @@
 		Enter User Name : <input type="text" name="uname"><br>
 		<input type="submit">
 	</form>
-	
-		<form action="addUser2" method="post"> <!--sending the date to the server  -->
+		
+<!-- 	<form action="addUser2" > sending the date to the server 
 		action="addUsers2"
 		<br>
 		Enter User Id : <input type="text" name="uid"><br>
 		Enter User Name : <input type="text" name="uname"><br>
-		<input type="submit">
-	</form>
-		<form action="addUsers"> <!--sending the date to the server  -->
+		<input type="submit">	
+ 	</form> -->
+ 	
+ 		<form action="addUser2" method="get" > <!-- sending the date to the server  -->
+		action="addUsers2"
+		<br>
+		Enter User Id : <input type="text" name="uid"><br>
+		Enter User Name : <input type="text" name="uname"><br>
+		<input type="submit">	
+ 	</form>
+ 	
+<!--  	
+ 	<form action="addUser2" method="post"> sending the date to the server 
+		action="addUsers2"
+		<br>
+		Enter User Id : <input type="text" name="uid"><br>
+		Enter User Name : <input type="text" name="uname"><br>
+		<input type="submit">	
+ 	</form> -->
+ 	
+ 	
+	<form action="addUsers" method="post"> <!--sending the date to the server  -->
 		action="addUsers"
 		<br>
 		Enter User Id : <input type="text" name="uid"><br>
 		Enter User Name : <input type="text" name="uname"><br>
 		<input type="submit">
 	</form>
-	
-
 	
 	<hr>
  	

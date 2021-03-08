@@ -21,8 +21,11 @@ public class LoggingAspect {
 
 
 //	public static final Logger Log = LoggerFactory.getLogger(LoggingAspect.class);
+	
+	
 	@Before("execution(public * com.example.demo.UserController.getUser())")
 	public void log() {
+		System.out.println("getUser Method Called from aspect");
 		log.info("getUser Method Called from aspect");
 	}
 

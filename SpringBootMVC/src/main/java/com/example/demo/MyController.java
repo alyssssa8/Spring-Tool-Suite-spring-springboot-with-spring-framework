@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.UserRepo;
 import com.example.demo.model.User;
 
 
-
+@RestController
 @Controller
 public class MyController {
 	// do not have to go through main, just use URL
@@ -53,24 +54,37 @@ public class MyController {
 	
 //	same as above
 //	ModelMap
+//	
+//	@RequestMapping("/add")
 	
-	@RequestMapping("/add")
+//	default is get
+	
+//	public String add(@RequestParam("num1") int i, @RequestParam("num2") int j, ModelMap m) {
+
+//		//modelmap like hash map, key and value. 
+	
+//		int num3 = i + j;
+//		m.addAttribute("num3", num3);
+//		return "result";	
+//	}
+	
+	@GetMapping("/add")
 	public String add(@RequestParam("num1") int i, @RequestParam("num2") int j, ModelMap m) {
-		//modelmap like hash map, key and value. 
 		int num3 = i + j;
 		m.addAttribute("num3", num3);
 		return "result";	
 	}
 	
 	
-	
 // added to the model, with work with /add and /addUser
+	
 	@ModelAttribute
 	public void addmodel(Model m) {
 		m.addAttribute("name", "Gauttam");
 	}
 	
 	@RequestMapping("/addUser")
+	
 	// could have int to String, but not string to int. 
 	//	if used method post, then can not use @RequestParam
 	
@@ -85,6 +99,15 @@ public class MyController {
 //		m.addAttribute("user", u);
 //		return "result";
 //	}
+	
+	
+
+//	same as above
+	
+	@RequestMapping("addUser2")
+	public String addUser(User u) {
+		return "result";
+	}
 	
 	
 	//same as above
@@ -114,14 +137,12 @@ public class MyController {
 	
 	
 
-
+//	@RequestMapping(value ="addUser2",method=RequestMethod.POST)
+//	public String addUser(User u) {
+//		return "result";
+//	}
+	
 //	same as above
-	
-	@RequestMapping("addUser2")
-	public String addUser(User u) {
-		return "result";
-	}
-	
 	
 	
 //	@PostMapping(value="addUser2")
@@ -131,11 +152,12 @@ public class MyController {
 //	}
 //
 
-	
-//	@RequestMapping(value ="addUser2",method=RequestMethod.POST)
+//	@GetMapping(value="addUser2")
 //	public String addUser(User u) {
 //		return "result";
 //	}
+	
+
 	
 //	@PostMapping(value ="addUser2")
 //		return "result";
@@ -146,41 +168,45 @@ public class MyController {
 //		return "result";
 //	}
 	
-//	@GetMapping(value="addUser2")
-//	public String addUser(User u) {
-//		return "result";
-//	}
-	
-	@Autowired
-	UserRepo repo;
-	
+
 	
 
 //***************************************************************	
 	
 	
-//	@GetMapping("getUser"）
+//	@GetMapping("getUser")
 //	public String getUser(Model m) {
 //		List<User> user = Arrays.asList(new User(101,"Gauttam"),new User( 102,"Robert"));
 //		m.addAttribute("result", user);
 //		return "showUser";
 //	}
-	
+//	
 	
 
 
+	@Autowired
+	UserRepo repo;
+	
 	@GetMapping("getUsers")
 	public String getUsers(Model m) {
 		
-		m.addAttribute("result", repo.findAll());
+		m.addAttribute("result2", repo.findAll());
+
 		
 		return "showUser";
 	}
+	@GetMapping("getUserOut")
+	public List<User> getUsersOut(User user) {
 	
+	
+
+		
+		return repo.findAll();
+	}
 	@GetMapping("getUser")
 	public String getUser(@RequestParam int uid, Model m) {
 		
-		m.addAttribute("result", repo.getOne(uid));
+		m.addAttribute("result2", repo.getOne(uid));
 		
 		return "showUser";
 	}
@@ -194,19 +220,20 @@ public class MyController {
 	
 //	@GetMapping("getUserByUname")
 //	public String getUserByUname(@RequestParam String uname,Model m) {
-//		m.addAttribute("result", repo.getUserByUname(uname));	
-////		m.addAttribute("result", repo.findByUnameOrderByUidAsc(uname));
-////		m.addAttribute("result", repo.findByUnameOrderByUidDesc(uname));
+//		m.addAttribute("result2", repo.getUserByUname(uname));	
+////		m.addAttribute("result2", repo.findByUnameOrderByUidAsc(uname));
+////		m.addAttribute("result2", repo.findByUnameOrderByUidDesc(uname));
 //		return "showUser";
 //	}
-////	hello [User [uid=4, uname=Robot]]
+	
+	
+//	hello [User [uid=4, uname=Robot]]
 	
 	
 	@GetMapping("getUserByUname")
 	public String getUserByUname(@RequestParam String uname,Model m)
 	{
-		m.addAttribute("result", repo.find(uname));
-		
+		m.addAttribute("result2", repo.find(uname));
 		return "showUser";
 	}
 }
