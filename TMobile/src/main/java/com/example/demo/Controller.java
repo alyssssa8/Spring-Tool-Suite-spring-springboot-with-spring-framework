@@ -1,4 +1,4 @@
-package com.example.demo.Controller;
+package com.example.demo;
 
 import java.util.Arrays;
 import java.util.List;
@@ -21,6 +21,7 @@ public class Controller {
 		User[] users = restTemplate.getForObject(url, User[].class);
 		
 		return Arrays.asList(users);
+
 		
 	}
 
