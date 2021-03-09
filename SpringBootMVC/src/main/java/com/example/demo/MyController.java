@@ -21,7 +21,7 @@ import com.example.demo.dao.UserRepo;
 import com.example.demo.model.User;
 
 
-@RestController
+//@RestController
 @Controller
 public class MyController {
 	// do not have to go through main, just use URL
