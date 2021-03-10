@@ -14,18 +14,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 //import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.dao.UserRepo;
 import com.example.demo.model.User;
 
-
-//@RestController
 @Controller
+//@RestController
+
 public class MyController {
 	// do not have to go through main, just use URL
-	@RequestMapping("/home")
+	@RequestMapping("/home2")
 	public String home() {
 		return "index";
 	}
@@ -198,13 +199,20 @@ public class MyController {
 	
 	
 	// print out to the browser
-	
+//	@ResponseBody
 	@GetMapping("getUserOut")
+	@ResponseBody	
 	public List<User> getUsersOut(User user) {
 		return repo.findAll();
 	}
 	
 	@GetMapping("getUser")
+	
+	
+	
+	
+	
+	
 	public String getUser(@RequestParam int uid, Model m) {
 		
 		m.addAttribute("result2", repo.getOne(uid));
