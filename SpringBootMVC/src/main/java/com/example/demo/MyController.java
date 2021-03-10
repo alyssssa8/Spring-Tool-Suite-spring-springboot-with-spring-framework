@@ -215,6 +215,8 @@ public class MyController {
 	@PostMapping("addUsers")
 	public String addUsers(@ModelAttribute User u) {
 		repo.save(u);
+		
+		
 		return "result";
 	}
 	
