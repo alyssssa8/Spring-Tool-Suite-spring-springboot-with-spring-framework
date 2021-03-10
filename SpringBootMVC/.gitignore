@@ -32,3 +32,4 @@ build/
 ### VS Code ###
 .vscode/
 /app.log
+/app.log.2021-03-08.0.gz
