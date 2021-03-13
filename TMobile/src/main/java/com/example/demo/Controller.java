@@ -39,13 +39,13 @@ public class Controller {
 		return Arrays.asList(users);	
 	}
 	
-	 @RequestMapping(value = "https://jsonplaceholder.typicode.com/users")
-	 public String getProductList() {
-	      org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-	      HttpEntity <String> entity = new HttpEntity<String>(headers);
-	      
-	      return restTemplate.exchange("http://localhost:8080/products", HttpMethod.GET, entity, String.class).getBody();
-	   }
+//	 @RequestMapping(value = "https://jsonplaceholder.typicode.com/users")
+//	 public String getProductList() {
+//	      org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
+//	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+//	      HttpEntity <String> entity = new HttpEntity<String>(headers);
+//	      
+//	      return restTemplate.exchange("http://localhost:8080/products", HttpMethod.GET, entity, String.class).getBody();
+//	   }
 	
 }

@@ -31,7 +31,3 @@ build/
 
 ### VS Code ###
 .vscode/
-/app.log
-/app.log.2021-03-08.0.gz
-/app.log.2021-03-10.0.gz
-/app.log.2021-03-11.0.gz

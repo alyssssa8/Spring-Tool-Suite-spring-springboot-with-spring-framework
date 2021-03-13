@@ -17,8 +17,10 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.ducat.springboot.rest.model.Employee;
 import com.ducat.springboot.rest.service.Myservice;
 
-//@RestController
+@RestController
 @Controller
+///////
+
 public class Mycontroller {
 
 	@Autowired
