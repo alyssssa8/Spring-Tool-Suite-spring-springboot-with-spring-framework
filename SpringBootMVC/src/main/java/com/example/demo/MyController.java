@@ -4,6 +4,10 @@ import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -16,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.web.servlet.ModelAndView;
 
+//import com.Gauttam.model.Customer;
 import com.example.demo.dao.UserRepo;
 import com.example.demo.model.User;
 
@@ -30,6 +36,26 @@ public class MyController {
 	public String home() {
 		return "index";
 	}
+	
+	@Autowired
+	   RestTemplate restTemplate;
+	   @ResponseBody
+	   @RequestMapping(value = "/getUserOut")
+	   public String getProductList() {
+	      HttpHeaders headers = new HttpHeaders();
+	      headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+	      HttpEntity <String> entity = new HttpEntity<String>(headers);
+	      
+	      return restTemplate.exchange("http://localhost:8080/products", HttpMethod.GET, entity, String.class).getBody();
+	   }
+	
+	
+//	@GetMapping({"/","hello"})
+//	public String hello(@RequestParam(value = "name",defaultValue = "World", required = true) String name, Model m) {
+//		m.addAttribute("name", name);
+//		return "index";	
+//	}
+//	
 	
 //	create a ModelAndView
 	
@@ -77,6 +103,8 @@ public class MyController {
 	}
 	
 	
+	
+	
 // added to the model, with work with /add and /addUser
 	
 	@ModelAttribute
@@ -106,9 +134,15 @@ public class MyController {
 //	same as above
 	
 	@RequestMapping("addUser2")
-	public String addUser(User u) {
+	public String addUser(User u) {  //auto added to the model
 		return "result";
 	}
+	
+	
+//	@GetMapping(value="addUser2")
+//	public String addUser(User u) {
+//		return "result";
+//	}
 	
 	
 	//same as above
@@ -153,11 +187,7 @@ public class MyController {
 //	}
 //
 
-//	@GetMapping(value="addUser2")
-//	public String addUser(User u) {
-//		return "result";
-//	}
-	
+
 
 	
 //	@PostMapping(value ="addUser2")
@@ -184,7 +214,10 @@ public class MyController {
 //	
 	
 
+	
 
+	
+	
 	@Autowired
 	UserRepo repo;
 	
@@ -207,12 +240,6 @@ public class MyController {
 	}
 	
 	@GetMapping("getUser")
-	
-	
-	
-	
-	
-	
 	public String getUser(@RequestParam int uid, Model m) {
 		
 		m.addAttribute("result2", repo.getOne(uid));

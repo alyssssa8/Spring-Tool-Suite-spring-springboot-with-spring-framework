@@ -1,3 +1,9 @@
+-- https://stackoverflow.com/questions/650098/how-to-execute-an-sql-script-file-using-c-sharp
+
+-- https://social.msdn.microsoft.com/Forums/en-US/43e8bc3a-1132-453b-b950-09427e970f31/run-a-sql-script-file-in-c?forum=adodotnetdataproviders
+
+-- https://www.c-sharpcorner.com/forums/executing-sql-script-file-from-c-sharp-asp-net
+
 CREATE DATABASE paramount;
 
 USE paramount;
